@@ -1,0 +1,2316 @@
+{
+  "generated_at": "2026-03-13T12:12:53.174478+00:00",
+  "schema_version": "2.0",
+  "processed_reports": [
+    {
+      "id": "d734451d-4c8e-4dfc-8b31-2c4dae87955f",
+      "report_id": "AKY-RPT-001",
+      "raw_report_id": "aky-001",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91085,
+          40.9807
+        ]
+      },
+      "disaster_type": "Heyelan",
+      "severity_score": 3.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91085,
+          40.9807
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:10:00+03:00",
+      "processed_at": "2026-03-13T12:07:15.043194+00:00",
+      "llm_analysis": {
+        "disaster_type": "Heyelan",
+        "corrected_text": null,
+        "summary": "Uzungöl ana yolu heyelan nedeniyle kapandı, ulaşım durdu.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": true,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": true,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Uzungöl ana yolu heyelan nedeniyle kapandı, ulaşım durdu.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "fcb44cd7-69b5-4097-82b6-0a2e60f2628c",
+      "report_id": "AKY-RPT-002",
+      "raw_report_id": "aky-002",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91092,
+          40.98062
+        ]
+      },
+      "disaster_type": "infrastructure failure",
+      "severity_score": 1.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91092,
+          40.98062
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:11:30+03:00",
+      "processed_at": "2026-03-13T12:07:25.015952+00:00",
+      "llm_analysis": {
+        "disaster_type": "infrastructure failure",
+        "corrected_text": null,
+        "summary": "Merkezdeki ana köprünün çökmesi nedeniyle kara yolu bağlantısı kesildi.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Merkezdeki ana köprünün çökmesi nedeniyle kara yolu bağlantısı kesildi.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "99dbac4f-e350-431c-b53e-5efc10e9e5d2",
+      "report_id": "AKY-RPT-003",
+      "raw_report_id": "aky-003",
+      "user_behavior": "victim",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91078,
+          40.98055
+        ]
+      },
+      "disaster_type": "landslide",
+      "severity_score": 3.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91078,
+          40.98055
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:12:40+03:00",
+      "processed_at": "2026-03-13T12:07:36.570485+00:00",
+      "llm_analysis": {
+        "disaster_type": "landslide",
+        "corrected_text": "Yollar kapandı, geçemiyoruz. Her yer taş toprak doldu. Acil yol lazım.",
+        "summary": "Yolların taş ve toprakla kapandığı, ulaşımın kesildiği ve acil yol yardımı istendiği belirtiliyor.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": true,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": true,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Yollar kapandı, geçemiyoruz. Her yer taş toprak doldu. Acil yol lazım.",
+      "summary": "Yolların taş ve toprakla kapandığı, ulaşımın kesildiği ve acil yol yardımı istendiği belirtiliyor.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "12da1139-0da3-4be0-819c-e5a57649232d",
+      "report_id": "AKY-RPT-004",
+      "raw_report_id": "aky-004",
+      "user_behavior": "victim",
+      "can_communicate": false,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91099,
+          40.98048
+        ]
+      },
+      "disaster_type": "road_disruption",
+      "severity_score": 4.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91099,
+          40.98048
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:13:55+03:00",
+      "processed_at": "2026-03-13T12:07:47.809525+00:00",
+      "llm_analysis": {
+        "disaster_type": "road_disruption",
+        "corrected_text": "Asfalt koptu gitti, of araba geçmiyor buradan, mahsur kaldık, yardım.",
+        "summary": "Kullanıcı, asfaltın kopması nedeniyle yolda mahsur kaldığını ve yardım istediğini belirtiyor.",
+        "indicators": {
+          "people_trapped": true,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": true,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Asfalt koptu gitti, of araba geçmiyor buradan, mahsur kaldık, yardım.",
+      "summary": "Kullanıcı, asfaltın kopması nedeniyle yolda mahsur kaldığını ve yardım istediğini belirtiyor.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "e093b1aa-6c9c-470c-ac45-aba431323e8b",
+      "report_id": "AKY-RPT-005",
+      "raw_report_id": "aky-005",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9111,
+          40.9806
+        ]
+      },
+      "disaster_type": "road collapse",
+      "severity_score": 2.2,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9111,
+          40.9806
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:15:20+03:00",
+      "processed_at": "2026-03-13T12:08:00.428885+00:00",
+      "llm_analysis": {
+        "disaster_type": "road collapse",
+        "corrected_text": null,
+        "summary": "Yol çöktü ve uçurum oluştu. Bölgeye ulaşım mümkün değil.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": true,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": true,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Yol çöktü ve uçurum oluştu. Bölgeye ulaşım mümkün değil.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "7d03f436-e0e2-4cbe-a2a1-86730dfe775d",
+      "report_id": "AKY-RPT-006",
+      "raw_report_id": "aky-006",
+      "user_behavior": "victim",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9191,
+          40.9836
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 3.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9191,
+          40.9836
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:17:10+03:00",
+      "processed_at": "2026-03-13T12:08:09.058895+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Dere kenarındaki ahır su baskınına uğradı; hayvanları güvenli ve yüksek bir bölgeye tahliye etmek için acil desteğe ihtiyacımız var.",
+        "summary": "Dere kenarındaki bir ahır su baskınına uğradı ve hayvanların tahliyesi için yardım isteniyor.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": true,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": true,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Dere kenarındaki ahır su baskınına uğradı; hayvanları güvenli ve yüksek bir bölgeye tahliye etmek için acil desteğe ihtiyacımız var.",
+      "summary": "Dere kenarındaki bir ahır su baskınına uğradı ve hayvanların tahliyesi için yardım isteniyor.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "eb9ca2ae-35e8-42eb-90c3-786517245be2",
+      "report_id": "AKY-RPT-007",
+      "raw_report_id": "aky-007",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91885,
+          40.98385
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 2.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.91885,
+          40.98385
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:18:40+03:00",
+      "processed_at": "2026-03-13T12:08:19.263975+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": null,
+        "summary": "Sel sularına kapılan sokak hayvanlarının kurtarılması için profesyonel ekiplerden yardım isteniyor.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": null,
+      "summary": "Sel sularına kapılan sokak hayvanlarının kurtarılması için profesyonel ekiplerden yardım isteniyor.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "c7dd9ebd-359c-4233-95a8-37902eaaaea3",
+      "report_id": "AKY-RPT-008",
+      "raw_report_id": "aky-008",
+      "user_behavior": "victim",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9194,
+          40.9837
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 4.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9194,
+          40.9837
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:19:55+03:00",
+      "processed_at": "2026-03-13T12:08:31.866172+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Köpekler çatıda kaldı, su çok yükseldi, kimse alamıyor. Yardım edin lütfen.",
+        "summary": "Köpeklerin çatıda mahsur kaldığı ve su seviyesinin yükseldiği bir sel durumu rapor edilmiştir. Yardım çağrısı yapılmıştır.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Köpekler çatıda kaldı, su çok yükseldi, kimse alamıyor. Yardım edin lütfen.",
+      "summary": "Köpeklerin çatıda mahsur kaldığı ve su seviyesinin yükseldiği bir sel durumu rapor edilmiştir. Yardım çağrısı yapılmıştır.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "e294779b-a367-4f10-bd6e-c1ce2f351c4a",
+      "report_id": "AKY-RPT-009",
+      "raw_report_id": "aky-009",
+      "user_behavior": "victim",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9192,
+          40.98355
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 4.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9192,
+          40.98355
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:21:10+03:00",
+      "processed_at": "2026-03-13T12:08:44.051439+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "İnekler boğulacak, ahır su doldu, kapı açılmıyor, yardım nolur.",
+        "summary": "Ahırın suyla dolması sonucu hayvanların boğulma tehlikesi bulunmaktadır ve yardım çağrısı yapılmaktadır.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "İnekler boğulacak, ahır su doldu, kapı açılmıyor, yardım nolur.",
+      "summary": "Ahırın suyla dolması sonucu hayvanların boğulma tehlikesi bulunmaktadır ve yardım çağrısı yapılmaktadır.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "c80967b6-a3cd-44d8-9089-46b05d48cfc9",
+      "report_id": "AKY-RPT-010",
+      "raw_report_id": "aky-010",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.919,
+          40.9838
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 4.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.919,
+          40.9838
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:22:35+03:00",
+      "processed_at": "2026-03-13T12:09:03.001952+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": null,
+        "summary": "Kediler ağaçta mahsur kaldı, su çok sert akıyor ve hayvanların ölme tehlikesi var.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": null,
+      "summary": "Kediler ağaçta mahsur kaldı, su çok sert akıyor ve hayvanların ölme tehlikesi var.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "eacd1bd3-0267-4cf7-ac28-cc636cfa4262",
+      "report_id": "AKY-RPT-011",
+      "raw_report_id": "aky-011",
+      "user_behavior": "victim",
+      "can_communicate": false,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9022,
+          40.9773
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 4.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9022,
+          40.9773
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:23:50+03:00",
+      "processed_at": "2026-03-13T12:09:22.115443+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Aracımız sel suları nedeniyle durdu; su seviyesi cam hizasına kadar yükseldi, tahliye edilemiyoruz.",
+        "summary": "Sel suları nedeniyle araçta mahsur kalan kişiler yardım istiyor. Su seviyesi yükselmiş durumda.",
+        "indicators": {
+          "people_trapped": true,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": true,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Aracımız sel suları nedeniyle durdu; su seviyesi cam hizasına kadar yükseldi, tahliye edilemiyoruz.",
+      "summary": "Sel suları nedeniyle araçta mahsur kalan kişiler yardım istiyor. Su seviyesi yükselmiş durumda.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "7c3f9f92-7013-41be-b4ba-c09a257e5acb",
+      "report_id": "AKY-RPT-012",
+      "raw_report_id": "aky-012",
+      "user_behavior": "victim",
+      "can_communicate": false,
+      "user_status": "entrapment-life-threatening-risk",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9024,
+          40.97745
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 6.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9024,
+          40.97745
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:24:40+03:00",
+      "processed_at": "2026-03-13T12:09:35.602624+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Otomobilimiz çamura saplandı ve kapılar dışarıdaki su basıncından dolayı açılmıyor, araç içinde mahsur kaldık.",
+        "summary": "Araç çamura saplanmış ve içerideki kişiler su basıncı nedeniyle kapıları açamıyor. Araç içinde mahsur kalmış durumdalar.",
+        "indicators": {
+          "people_trapped": true,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": true,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Otomobilimiz çamura saplandı ve kapılar dışarıdaki su basıncından dolayı açılmıyor, araç içinde mahsur kaldık.",
+      "summary": "Araç çamura saplanmış ve içerideki kişiler su basıncı nedeniyle kapıları açamıyor. Araç içinde mahsur kalmış durumdalar.",
+      "recommended_action": "dispatch_rescue"
+    },
+    {
+      "id": "466a66b9-cf64-41ec-885a-23d59821b100",
+      "report_id": "AKY-RPT-013",
+      "raw_report_id": "aky-013",
+      "user_behavior": "victim",
+      "can_communicate": false,
+      "user_status": "entrapment-life-threatening-risk",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9021,
+          40.9772
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 6.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9021,
+          40.9772
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:25:55+03:00",
+      "processed_at": "2026-03-13T12:09:46.450897+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Araba stop etti, su içeri giriyor. Kapı açılmıyor, yardım edin lütfen boğulacağız.",
+        "summary": "Bir araçta mahsur kalan ve su baskını nedeniyle boğulma tehlikesi yaşayan kişiler yardım istiyor.",
+        "indicators": {
+          "people_trapped": true,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": true,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Araba stop etti, su içeri giriyor. Kapı açılmıyor, yardım edin lütfen boğulacağız.",
+      "summary": "Bir araçta mahsur kalan ve su baskını nedeniyle boğulma tehlikesi yaşayan kişiler yardım istiyor.",
+      "recommended_action": "dispatch_rescue"
+    },
+    {
+      "id": "5d6fcc81-96d4-4ca9-a98e-b2612d9215a0",
+      "report_id": "AKY-RPT-014",
+      "raw_report_id": "aky-014",
+      "user_behavior": "victim",
+      "can_communicate": false,
+      "user_status": "entrapment-life-threatening-risk",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.90255,
+          40.9776
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 6.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.90255,
+          40.9776
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:26:45+03:00",
+      "processed_at": "2026-03-13T12:09:57.271557+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Arabanın içindeyiz, su yükseliyor. Çok korkuyoruz, acil gelin kurtarın bizi.",
+        "summary": "Kullanıcı, su baskını nedeniyle araçlarında mahsur kaldıklarını ve yardım istediklerini belirtiyor.",
+        "indicators": {
+          "people_trapped": true,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": true,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Arabanın içindeyiz, su yükseliyor. Çok korkuyoruz, acil gelin kurtarın bizi.",
+      "summary": "Kullanıcı, su baskını nedeniyle araçlarında mahsur kaldıklarını ve yardım istediklerini belirtiyor.",
+      "recommended_action": "dispatch_rescue"
+    },
+    {
+      "id": "edb2fb3c-0670-4a14-9420-a2a10abafc2e",
+      "report_id": "AKY-RPT-015",
+      "raw_report_id": "aky-015",
+      "user_behavior": "victim",
+      "can_communicate": false,
+      "user_status": "entrapment-life-threatening-risk",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9023,
+          40.9771
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 6.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9023,
+          40.9771
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:27:55+03:00",
+      "processed_at": "2026-03-13T12:10:13.861544+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Camı kıramıyoruz, su doluyor arabaya, sürükleniyoruz. İmdat, yardım!",
+        "summary": "Kullanıcı, su baskını nedeniyle arabasında mahsur kaldığını ve yardım istediğini belirtiyor.",
+        "indicators": {
+          "people_trapped": true,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": true,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Camı kıramıyoruz, su doluyor arabaya, sürükleniyoruz. İmdat, yardım!",
+      "summary": "Kullanıcı, su baskını nedeniyle arabasında mahsur kaldığını ve yardım istediğini belirtiyor.",
+      "recommended_action": "dispatch_rescue"
+    },
+    {
+      "id": "287a870c-97e2-4a55-8462-15b2c0746553",
+      "report_id": "AKY-RPT-016",
+      "raw_report_id": "aky-016",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9169,
+          40.9799
+        ]
+      },
+      "disaster_type": "elektrik kesintisi",
+      "severity_score": 4.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9169,
+          40.9799
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:28:40+03:00",
+      "processed_at": "2026-03-13T12:10:25.228345+00:00",
+      "llm_analysis": {
+        "disaster_type": "elektrik kesintisi",
+        "corrected_text": null,
+        "summary": "Ana dağıtım trafosunda su teması sonucu patlamalar meydana gelmiş ve bölgede elektrik kesintisi yaşanmaktadır. Elektriğin derhal kesilmesi gerektiği belirtilmektedir.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": true,
+          "utility_dangerous": true,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": true,
+        "utility_dangerous": true,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Ana dağıtım trafosunda su teması sonucu patlamalar meydana gelmiş ve bölgede elektrik kesintisi yaşanmaktadır. Elektriğin derhal kesilmesi gerektiği belirtilmektedir.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "dd119351-4eb6-4bcd-86ae-354f5d90bc5b",
+      "report_id": "AKY-RPT-017",
+      "raw_report_id": "aky-017",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9171,
+          40.9801
+        ]
+      },
+      "disaster_type": "Elektrik Kazası",
+      "severity_score": 4.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9171,
+          40.9801
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:29:55+03:00",
+      "processed_at": "2026-03-13T12:10:34.033611+00:00",
+      "llm_analysis": {
+        "disaster_type": "Elektrik Kazası",
+        "corrected_text": null,
+        "summary": "Devrilen elektrik direği ve kopan yüksek gerilim telleri suyun içine düştü. Bölgede elektrik çarpılma riski bulunuyor.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": true,
+          "utility_dangerous": true,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": true,
+        "utility_dangerous": true,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Devrilen elektrik direği ve kopan yüksek gerilim telleri suyun içine düştü. Bölgede elektrik çarpılma riski bulunuyor.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "e1bff761-3569-4d90-80ec-43e556c14541",
+      "report_id": "AKY-RPT-018",
+      "raw_report_id": "aky-018",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.917,
+          40.9803
+        ]
+      },
+      "disaster_type": "elektrik kazası",
+      "severity_score": 4.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.917,
+          40.9803
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:31:10+03:00",
+      "processed_at": "2026-03-13T12:10:45.202657+00:00",
+      "llm_analysis": {
+        "disaster_type": "elektrik kazası",
+        "corrected_text": null,
+        "summary": "Trafo patlaması nedeniyle elektrik çarpma tehlikesi bulunmaktadır. Bölgeye girilmemesi gerektiği belirtilmektedir.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": true,
+          "utility_dangerous": true,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": true,
+        "utility_dangerous": true,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Trafo patlaması nedeniyle elektrik çarpma tehlikesi bulunmaktadır. Bölgeye girilmemesi gerektiği belirtilmektedir.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "f31ad1d4-2060-49dd-af02-13e5023c42a0",
+      "report_id": "AKY-RPT-019",
+      "raw_report_id": "aky-019",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9168,
+          40.9797
+        ]
+      },
+      "disaster_type": "elektrik kesintisi",
+      "severity_score": 4.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9168,
+          40.9797
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:32:30+03:00",
+      "processed_at": "2026-03-13T12:10:56.781481+00:00",
+      "llm_analysis": {
+        "disaster_type": "elektrik kesintisi",
+        "corrected_text": null,
+        "summary": "Kopmuş teller nedeniyle elektrik kesintisi yaşanıyor, kıvılcımlar tehlike oluşturuyor. Bölgeye girilmemesi uyarısı yapılıyor.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": true,
+          "utility_dangerous": true,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": true,
+        "utility_dangerous": true,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Kopmuş teller nedeniyle elektrik kesintisi yaşanıyor, kıvılcımlar tehlike oluşturuyor. Bölgeye girilmemesi uyarısı yapılıyor.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "665ee918-ab33-4335-b1c3-78923e5a64c8",
+      "report_id": "AKY-RPT-020",
+      "raw_report_id": "aky-020",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9172,
+          40.98
+        ]
+      },
+      "disaster_type": "fire",
+      "severity_score": 2.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9172,
+          40.98
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:33:45+03:00",
+      "processed_at": "2026-03-13T12:11:07.409761+00:00",
+      "llm_analysis": {
+        "disaster_type": "fire",
+        "corrected_text": null,
+        "summary": "Elektriklerin kesilmemesi nedeniyle bir trafonun patlama riski olduğu belirtiliyor.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": true,
+          "utility_dangerous": true,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": true,
+        "utility_dangerous": true,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Elektriklerin kesilmemesi nedeniyle bir trafonun patlama riski olduğu belirtiliyor.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "566c1e74-e829-4483-a295-b9db19bb5850",
+      "report_id": "AKY-RPT-021",
+      "raw_report_id": "aky-021",
+      "user_behavior": "victim",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9122,
+          40.9811
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 4.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9122,
+          40.9811
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:35:10+03:00",
+      "processed_at": "2026-03-13T12:11:19.204040+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Evin arka bahçesinden gelen sel suyu kapıya dayandı, içeri girmesi an meselesi.",
+        "summary": "Sel suyunun eve yaklaşması nedeniyle acil durum bildirilmiştir.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Evin arka bahçesinden gelen sel suyu kapıya dayandı, içeri girmesi an meselesi.",
+      "summary": "Sel suyunun eve yaklaşması nedeniyle acil durum bildirilmiştir.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "8bf14ef5-5b33-403d-9d69-f4bbab7e476c",
+      "report_id": "AKY-RPT-022",
+      "raw_report_id": "aky-022",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9138,
+          40.982
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 3.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9138,
+          40.982
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:36:40+03:00",
+      "processed_at": "2026-03-13T12:11:28.924309+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": null,
+        "summary": "Yokuş aşağı bir sokakta şiddetli su akışı nedeniyle yürümenin imkansız olduğu bildirilmiştir.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Yokuş aşağı bir sokakta şiddetli su akışı nedeniyle yürümenin imkansız olduğu bildirilmiştir.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "05190584-af3a-4af0-86b7-c19bf4f53db2",
+      "report_id": "AKY-RPT-023",
+      "raw_report_id": "aky-023",
+      "user_behavior": "victim",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9146,
+          40.9802
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 1.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9146,
+          40.9802
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:38:05+03:00",
+      "processed_at": "2026-03-13T12:11:37.628616+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Apartman otoparkı tamamen suyla doldu, araçlar içeride kaldı.",
+        "summary": "Apartman otoparkı su baskınına uğradı ve araçlar mahsur kaldı.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": "Apartman otoparkı tamamen suyla doldu, araçlar içeride kaldı.",
+      "summary": "Apartman otoparkı su baskınına uğradı ve araçlar mahsur kaldı.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "c29bc556-5412-498e-8e91-dbfd8012894c",
+      "report_id": "AKY-RPT-024",
+      "raw_report_id": "aky-024",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9159,
+          40.9818
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 1.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9159,
+          40.9818
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:39:30+03:00",
+      "processed_at": "2026-03-13T12:11:48.494738+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": null,
+        "summary": "Dere yatağı taştı ve çevredeki tarım alanlarını su bastı.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Dere yatağı taştı ve çevredeki tarım alanlarını su bastı.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "1dabfaa0-2293-4663-b688-65c298ebef96",
+      "report_id": "AKY-RPT-025",
+      "raw_report_id": "aky-025",
+      "user_behavior": "victim",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9115,
+          40.9824
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 1.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9115,
+          40.9824
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:40:55+03:00",
+      "processed_at": "2026-03-13T12:12:00.054614+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Zemin kattaki daireye su girdi, eşyalar yüzmeye başladı.",
+        "summary": "Zemin kattaki bir daireyi su bastı ve eşyalar zarar gördü.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": "Zemin kattaki daireye su girdi, eşyalar yüzmeye başladı.",
+      "summary": "Zemin kattaki bir daireyi su bastı ve eşyalar zarar gördü.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "a3faad34-2fce-424e-a17f-798c3f0f2ee4",
+      "report_id": "AKY-RPT-026",
+      "raw_report_id": "aky-026",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9131,
+          40.9799
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 1.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9131,
+          40.9799
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:42:20+03:00",
+      "processed_at": "2026-03-13T12:12:08.810466+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": null,
+        "summary": "Ana caddede su birikintileri nedeniyle trafik durdu.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Ana caddede su birikintileri nedeniyle trafik durdu.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "a7688fee-dff4-4ecb-8656-8d2de765f60d",
+      "report_id": "AKY-RPT-027",
+      "raw_report_id": "aky-027",
+      "user_behavior": "victim",
+      "can_communicate": false,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9127,
+          40.9819
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 4.5,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9127,
+          40.9819
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:43:45+03:00",
+      "processed_at": "2026-03-13T12:12:19.511003+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Evden çıkamıyoruz, sokak tamamen sel suyuyla dolu.",
+        "summary": "Sokak sel suları nedeniyle ulaşıma kapalı ve bir kişi evinden çıkamıyor.",
+        "indicators": {
+          "people_trapped": true,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": false,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": true,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": false,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Evden çıkamıyoruz, sokak tamamen sel suyuyla dolu.",
+      "summary": "Sokak sel suları nedeniyle ulaşıma kapalı ve bir kişi evinden çıkamıyor.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "63158379-dc3e-4050-ba06-e5c04b9e292c",
+      "report_id": "AKY-RPT-028",
+      "raw_report_id": "aky-028",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9142,
+          40.983
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 3.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9142,
+          40.983
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:45:05+03:00",
+      "processed_at": "2026-03-13T12:12:31.393001+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": null,
+        "summary": "Yağmur suyu mazgalların tıkanması nedeniyle yola geri tepti ve yayıldı.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Yağmur suyu mazgalların tıkanması nedeniyle yola geri tepti ve yayıldı.",
+      "recommended_action": "monitor"
+    },
+    {
+      "id": "3aa18b5f-8cb8-4aae-be41-4285bf62c5fe",
+      "report_id": "AKY-RPT-029",
+      "raw_report_id": "aky-029",
+      "user_behavior": "victim",
+      "can_communicate": true,
+      "user_status": "entrapment-life-threatening-risk",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.915,
+          40.9809
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 6.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.915,
+          40.9809
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:46:40+03:00",
+      "processed_at": "2026-03-13T12:12:42.449692+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": "Su seviyesi hızla yükseliyor, tahliye edilmezsek içeride kalacağız.",
+        "summary": "Raporda su seviyesinin hızla yükseldiği ve tahliye talebi olduğu belirtiliyor.",
+        "indicators": {
+          "people_trapped": true,
+          "people_injured": false,
+          "life_threat": true,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": false,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": true
+        }
+      },
+      "indicators_json": {
+        "people_trapped": true,
+        "people_injured": false,
+        "life_threat": true,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": false,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": true
+      },
+      "corrected_text": "Su seviyesi hızla yükseliyor, tahliye edilmezsek içeride kalacağız.",
+      "summary": "Raporda su seviyesinin hızla yükseldiği ve tahliye talebi olduğu belirtiliyor.",
+      "recommended_action": "dispatch_rescue"
+    },
+    {
+      "id": "0781a9d6-ad63-4503-ac5b-145c65e04533",
+      "report_id": "AKY-RPT-030",
+      "raw_report_id": "aky-030",
+      "user_behavior": "observer",
+      "can_communicate": true,
+      "user_status": "risk-observed",
+      "gps_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9135,
+          40.98
+        ]
+      },
+      "disaster_type": "flood",
+      "severity_score": 3.0,
+      "vlm_analysis": null,
+      "location_match_score": null,
+      "user_location": {
+        "type": "Point",
+        "coordinates": [
+          37.9135,
+          40.98
+        ]
+      },
+      "image_date": null,
+      "report_date": "2026-02-27T08:48:10+03:00",
+      "processed_at": "2026-03-13T12:12:51.972487+00:00",
+      "llm_analysis": {
+        "disaster_type": "flood",
+        "corrected_text": null,
+        "summary": "Sel suları yol üzerindeki çöp konteynerlerini sürüklemeye başladı.",
+        "indicators": {
+          "people_trapped": false,
+          "people_injured": false,
+          "life_threat": false,
+          "children_elderly_at_risk": false,
+          "large_crowd_affected": false,
+          "building_collapsed": false,
+          "building_damaged": false,
+          "road_blocked": true,
+          "utility_disrupted": false,
+          "utility_dangerous": false,
+          "flood_water_rising": true,
+          "fire_active": false,
+          "landslide_active": false,
+          "hazmat_present": false,
+          "aftershock_risk": false,
+          "no_communication": false,
+          "area_isolated": false,
+          "rescue_requested": false
+        }
+      },
+      "indicators_json": {
+        "people_trapped": false,
+        "people_injured": false,
+        "life_threat": false,
+        "children_elderly_at_risk": false,
+        "large_crowd_affected": false,
+        "building_collapsed": false,
+        "building_damaged": false,
+        "road_blocked": true,
+        "utility_disrupted": false,
+        "utility_dangerous": false,
+        "flood_water_rising": true,
+        "fire_active": false,
+        "landslide_active": false,
+        "hazmat_present": false,
+        "aftershock_risk": false,
+        "no_communication": false,
+        "area_isolated": false,
+        "rescue_requested": false
+      },
+      "corrected_text": null,
+      "summary": "Sel suları yol üzerindeki çöp konteynerlerini sürüklemeye başladı.",
+      "recommended_action": "monitor"
+    }
+  ]
+}

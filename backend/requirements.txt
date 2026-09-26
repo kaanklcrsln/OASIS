@@ -1,0 +1,12 @@
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+sqlalchemy==2.0.30
+asyncpg==0.29.0
+geoalchemy2==0.15.1
+shapely==2.0.4
+pydantic==2.7.1
+pydantic-settings==2.2.1
+python-dotenv==1.0.1
+Pillow>=10.0.0
+python-multipart>=0.0.9
+google-genai>=1.0.0

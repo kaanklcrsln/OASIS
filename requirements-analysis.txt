@@ -1,0 +1,14 @@
+# Dependencies for the offline research scripts in analysis/, ai_engine/ and scripts/.
+# The running system (docker compose) does NOT need these.
+#
+#   python -m venv .venv && .venv/Scripts/activate   # Windows
+#   python -m venv .venv && source .venv/bin/activate  # macOS / Linux
+#   pip install -r requirements-analysis.txt
+google-genai>=1.0.0
+python-dotenv>=1.0.1
+pandas>=2.0
+numpy>=1.26
+matplotlib>=3.8
+seaborn>=0.13
+scikit-learn>=1.4
+python-docx>=1.1

@@ -1,0 +1,21 @@
+﻿report_id,text_preview,gemma_severity,gemini_severity,spacy_severity,gemma_gemini_agreement,gemma_spacy_agreement,gemini_spacy_agreement
+AKY-RPT-001,"Heyelan nedeniyle Uzungöl ana yolu kapandı, bölgeye araç girişi ve çıkışı şu an ...",4.0,3.7,1.5,0.9444,0.8333,0.8889
+AKY-RPT-002,Merkezdeki ana köprü çöktüğü için karşı yakayla olan kara yolu bağlantısı tamame...,4.0,3.7,3.0,0.8889,0.8889,0.8889
+AKY-RPT-003,yollar kapandi kısme gecemıo her yer tas toprak dolduu acil yol lazımmm. Mahsur ...,6.5,8.0,3.0,0.9444,0.8333,0.7778
+AKY-RPT-004,asfalt koptu gıttı off araba gecmıo burdan mahsur kaldkk yardım. Yol çöktü.,5.0,7.5,5.0,0.8333,0.7778,0.7222
+AKY-RPT-005,yol coktu ucurum oldU sakın gelmıyn buraya yol yok sakınnn. Uyarı yapılıyor.,2.5,5.5,1.5,0.8889,0.8889,0.7778
+AKY-RPT-006,Dere kenarındaki ahırı su bastı; hayvanları güvenli ve yüksek bir bölgeye tahliy...,3.5,5.0,1.0,0.8333,0.8889,0.8333
+AKY-RPT-007,Sel sularına kapılan ve sürüklenen sokak hayvanları için profesyonel ekiplerin b...,2.0,2.0,2.0,1.0,1.0,1.0
+AKY-RPT-008,kopekler catıda kaldı su cok yukseldı kımse ALAMIYOO yardım edın ltfnnn. Köpekle...,5.0,4.0,4.5,0.7778,0.8889,0.8889
+AKY-RPT-009,inekler bogulcak ahır su doldu kapı acılmıoo yardm nolur. Ahır su dolu.,2.5,4.0,1.0,0.8333,0.7778,0.8333
+AKY-RPT-010,kedıler agacta mahsur su cok sert akıyo kımse gıdemıo yanına ölcek hayvanlar. Ke...,6.5,4.5,2.5,0.7778,0.7222,0.7222
+AKY-RPT-011,Aracımız sel suları nedeniyle stop etti; su seviyesi cam hizasına kadar yükseldi...,6.5,7.5,4.0,0.8889,0.8333,0.8333
+AKY-RPT-012,Otomobilimiz balçığa saplandı ve kapılar dışarıdaki su basıncından dolayı açılmı...,6.5,6.0,2.5,0.7778,0.7222,0.8333
+AKY-RPT-013,araba stop etı su gırıo içeri Kapı acılmıo yardım pls bogulucaz. Su araç içine g...,6.5,8.0,1.0,0.7778,0.6111,0.7222
+AKY-RPT-014,arabanın ıcındeyız su yukselıyoOO cok korkuozzz acıl glın kurtarın bızı. Panik d...,6.5,6.0,2.0,0.8889,0.7778,0.8889
+AKY-RPT-015,camı kıramıoz su doluyo arabaa suruklenıo imdattt yardım. Araç sürükleniyor.,8.0,6.0,1.0,0.6667,0.5,0.8333
+AKY-RPT-016,Ana dağıtım trafosunda su teması nedeniyle patlamalar yaşanıyor; bölgedeki elekt...,5.5,4.5,3.5,0.8889,0.8333,0.9444
+AKY-RPT-017,"Devrilen elektrik direği ve kopan yüksek gerilim telleri suyun içine düştü, bölg...",7.0,4.5,1.0,0.8333,0.6667,0.8333
+AKY-RPT-018,trafo patlıo kımı buraa gelmesın elektırık carpıcak herkezı. Trafo patlaması.,7.5,6.5,1.5,0.7778,0.6111,0.8333
+AKY-RPT-019,teller koptu suya dustu heryer kıvılcım cok tehlıkelı gelmeyın. Kıvılcım var.,5.5,6.5,1.0,0.9444,0.7778,0.7222
+AKY-RPT-020,elektırıkler kesılmedı hala trifı yanıo baksın bırı patlıcak. Acil müdahale gere...,9.5,6.5,1.0,0.8333,0.6111,0.7778

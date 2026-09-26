@@ -1,0 +1,11 @@
+﻿report_id,text_preview,uppercase_jaccard,ascii_jaccard,typos_jaccard,condensed_jaccard,mean_jaccard,min_jaccard
+AKY-RPT-001,"Heyelan nedeniyle Uzungöl ana yolu kapandı, bölgeye araç gir",0.75,1.0,0.5,0.6,0.712,0.5
+AKY-RPT-006,Dere kenarındaki ahırı su bastı; hayvanları güvenli ve yükse,0.333,1.0,0.5,0.333,0.542,0.333
+AKY-RPT-011,Aracımız sel suları nedeniyle stop etti; su seviyesi cam hiz,0.625,1.0,0.5,0.625,0.688,0.5
+AKY-RPT-016,Ana dağıtım trafosunda su teması nedeniyle patlamalar yaşanı,0.222,0.8,0.333,0.286,0.41,0.222
+AKY-RPT-021,"Evin arka bahçesinden gelen sel suyu kapıya dayandı, içeri g",0.5,1.0,0.6,0.2,0.575,0.2
+AKY-RPT-026,Ana caddede su birikintileri nedeniyle trafik tamamen durdu.,0.5,1.0,0.5,0.5,0.625,0.5
+AKY-RPT-031,"Bodrum katı tamamen su doldu, yaşlı annem üst kata çıkamıyor",1.0,1.0,0.75,0.75,0.875,0.75
+AKY-RPT-036,"Diyaliz hastasıyım, elektrikler kesildi, cihazım çalışmıyor,",0.75,0.75,0.5,0.667,0.667,0.5
+AKY-RPT-041,"Bugün hava güzeldi ben de markete gittim, biraz yağmur yağdı",1.0,1.0,1.0,1.0,1.0,1.0
+AKY-RPT-046,"Mahallemizdeki cami avlusunu sel suları bastı, içeride sığın",1.0,0.714,0.5,0.357,0.643,0.357

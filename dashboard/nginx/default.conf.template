@@ -1,0 +1,83 @@
+# nginx:alpine renders this template with envsubst at container start.
+# Only variables defined in the environment (GOOGLE_MAPS_API_KEY, CESIUM_ION_TOKEN)
+# are substituted; nginx's own $variables are left untouched.
+
+server {
+    listen 80;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Docker's embedded DNS, so the API upstream is re-resolved after restarts
+    resolver 127.0.0.11 valid=10s ipv6=off;
+
+    # Runtime config for the browser (keys come from .env, never from git)
+    location ~ ^(/dashboard)?/config\.js$ {
+        default_type application/javascript;
+        add_header Cache-Control "no-store" always;
+        return 200 "window.OASIS_CONFIG = { googleMapsApiKey: '${GOOGLE_MAPS_API_KEY}', cesiumIonToken: '${CESIUM_ION_TOKEN}' };\n";
+    }
+
+    # OASIS API (same origin, no CORS needed)
+    location /api/ {
+        set $api_upstream http://api:8000;
+        proxy_pass $api_upstream;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        client_max_body_size 25m;
+    }
+
+    # TKGM 3D Tiles proxy (avoids CORS issues)
+    location /tkgm-proxy/surec/ {
+        proxy_pass https://3dsurectakipservis.tkgm.gov.tr/;
+        proxy_ssl_server_name on;
+        proxy_ssl_verify off;
+        proxy_set_header Host 3dsurectakipservis.tkgm.gov.tr;
+        proxy_set_header Origin "";
+        proxy_set_header Referer "";
+        proxy_hide_header Access-Control-Allow-Origin;
+        add_header Access-Control-Allow-Origin "*" always;
+        add_header Access-Control-Allow-Methods "GET, OPTIONS" always;
+    }
+
+    location /tkgm-proxy/bina/ {
+        proxy_pass https://3dbina.tkgm.gov.tr/;
+        proxy_ssl_server_name on;
+        proxy_ssl_verify off;
+        proxy_set_header Host 3dbina.tkgm.gov.tr;
+        proxy_set_header Origin "";
+        proxy_set_header Referer "";
+        proxy_hide_header Access-Control-Allow-Origin;
+        add_header Access-Control-Allow-Origin "*" always;
+        add_header Access-Control-Allow-Methods "GET, OPTIONS" always;
+    }
+
+    # /dashboard/* -> serve from root (used behind the Cloudflare tunnel)
+    location /dashboard/ {
+        rewrite ^/dashboard(/.*)?$ $1 break;
+        add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
+        add_header Pragma "no-cache";
+        add_header Expires "0";
+        try_files $uri $uri/ /index.html;
+    }
+
+    location = /dashboard {
+        return 301 /dashboard/;
+    }
+
+    # Large GeoJSON layers: allow browser caching + gzip
+    location /data/ {
+        gzip on;
+        gzip_types application/json application/geo+json application/octet-stream;
+        add_header Cache-Control "public, max-age=3600";
+        types { application/json geojson; }
+    }
+
+    location / {
+        add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
+        add_header Pragma "no-cache";
+        add_header Expires "0";
+        try_files $uri $uri/ /index.html;
+    }
+}

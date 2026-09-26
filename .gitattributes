@@ -1,0 +1,19 @@
+# Normalise line endings (files are consumed by Linux containers)
+* text=auto eol=lf
+
+*.bat  text eol=crlf
+*.ps1  text eol=crlf
+
+*.png  binary
+*.jpg  binary
+*.JPG  binary
+*.jpeg binary
+*.webp binary
+*.WEBP binary
+*.avif binary
+*.AVIF binary
+*.jxl  binary
+*.JXL  binary
+*.PNG  binary
+*.pdf  binary
+*.zip  binary

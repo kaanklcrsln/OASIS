@@ -1,0 +1,115 @@
+# OASIS stack
+#
+#   cp .env.example .env        # add GEMINI_API_KEY
+#   docker compose up -d --build
+#
+#   Mobile web app  → http://localhost:3000
+#   Web dashboard   → http://localhost:4000
+#   API docs        → http://localhost:8000/docs
+#
+# Optional profiles:
+#   docker compose --profile tools up -d    # + pgAdmin  (http://localhost:5050)
+#   docker compose --profile tunnel up -d   # + Cloudflare Tunnel (needs CLOUDFLARE_TOKEN)
+
+name: oasis
+
+services:
+  # ── PostgreSQL + PostGIS ───────────────────────────────────────────────────
+  db:
+    image: postgis/postgis:15-3.4
+    container_name: oasis_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-oasis}
+      POSTGRES_USER: ${POSTGRES_USER:-oasis_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-oasis_secret}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ── FastAPI backend ────────────────────────────────────────────────────────
+  api:
+    build: ./backend
+    image: oasis-api
+    container_name: oasis_api
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-oasis_user}:${POSTGRES_PASSWORD:-oasis_secret}@db:5432/${POSTGRES_DB:-oasis}
+      DEBUG: "false"
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      # Uploaded photos persist on the host (git-ignored)
+      - ./uploads:/app/images
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # ── Mobile app (browser version) ───────────────────────────────────────────
+  mobile_app:
+    build: ./mobile_app
+    image: oasis-mobile-app
+    container_name: oasis_mobile_app
+    restart: unless-stopped
+    ports:
+      - "${MOBILE_APP_PORT:-3000}:80"
+    depends_on:
+      - api
+
+  # ── Web dashboard (CesiumJS 3D WebGIS) ─────────────────────────────────────
+  dashboard:
+    build: ./dashboard
+    image: oasis-dashboard
+    container_name: oasis_dashboard
+    restart: unless-stopped
+    environment:
+      GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY:-}
+      CESIUM_ION_TOKEN: ${CESIUM_ION_TOKEN:-}
+    ports:
+      - "${DASHBOARD_PORT:-4000}:80"
+    depends_on:
+      - api
+
+  # ── pgAdmin (optional) ─────────────────────────────────────────────────────
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: oasis_pgadmin
+    restart: unless-stopped
+    profiles: ["tools"]
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@example.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-oasis_secret}
+    ports:
+      - "127.0.0.1:5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - db
+
+  # ── Cloudflare Tunnel (optional) ───────────────────────────────────────────
+  cloudflare_tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: oasis_tunnel
+    restart: unless-stopped
+    profiles: ["tunnel"]
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TOKEN:-}
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+    name: oasis_pgdata
+  pgadmin_data:
+    name: oasis_pgadmin_data

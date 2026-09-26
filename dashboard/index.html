@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <base href="/dashboard/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OASIS - Disaster Management Dashboard</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.110/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.110/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="config.js"></script>
+  <script src="tkgm-cache.js"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI',sans-serif;background:#0a0e14}
+    #cesiumContainer{position:absolute;top:0;left:var(--sidebar-w,280px);right:var(--rs-w,300px);bottom:0;overflow:hidden}
+    :root{--a:#5998C5;--ad:rgba(89,152,197,0.15);--am:rgba(89,152,197,0.30);--t:#d8dde4;--td:#6b7280;--b:rgba(255,255,255,0.07);--bh:rgba(89,152,197,0.40);--sidebar-w:280px;--rs-w:300px}
+    .glass{background:rgba(8,14,24,0.72);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid var(--b);box-shadow:0 8px 32px rgba(0,0,0,0.5)}
+
+    /* SIDEBAR */
+    #sidebar{position:absolute;top:0;left:0;bottom:0;width:var(--sidebar-w);z-index:1000;display:flex;flex-direction:column;color:var(--t);border-right:1px solid var(--b);border-radius:0}
+    #sb-header{flex-shrink:0;padding:14px 16px 0;background:rgba(0,0,0,0.20);border-bottom:1px solid var(--b)}
+    #sb-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    #sb-brand-icon{width:32px;height:32px;border-radius:8px;background:var(--ad);border:1px solid rgba(89,152,197,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    #sb-brand-text h1{font-size:14px;font-weight:700;color:#fff;letter-spacing:0.5px}
+    #sb-brand-text p{font-size:10px;color:var(--td)}
+    #sb-tabs{display:flex;gap:0}
+    .sb-tab{flex:1;padding:9px 6px;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--td);font-size:11px;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:5px}
+    .sb-tab:hover{color:var(--t)}
+    .sb-tab.active{color:var(--a);border-bottom-color:var(--a)}
+    #sb-body{flex:1;overflow:hidden;position:relative}
+    .sb-pane{position:absolute;inset:0;overflow-y:auto;padding:14px 14px 20px;display:none}
+    .sb-pane.active{display:block}
+    .sb-pane::-webkit-scrollbar{width:3px}
+    .sb-pane::-webkit-scrollbar-thumb{background:rgba(89,152,197,0.25);border-radius:2px}
+
+    /* AFET PANEL */
+    .dp-live{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--a);font-weight:600;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px}
+    .dp-live-dot{width:7px;height:7px;border-radius:50%;background:var(--a);animation:pulse 1.4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.6)}}
+    #dp-stats{display:flex;gap:6px;margin-bottom:12px}
+    .dp-stat{flex:1;text-align:center;background:var(--ad);border:1px solid var(--b);border-radius:8px;padding:6px 4px}
+    .dp-stat-val{font-size:18px;font-weight:700;color:#fff;line-height:1}
+    .dp-stat-lbl{font-size:9px;color:var(--td);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+    .dp-subtabs{display:flex;gap:4px;margin-bottom:10px}
+    .dp-subtab{flex:1;padding:6px 0;background:rgba(255,255,255,0.03);border:1px solid var(--b);border-radius:6px;color:var(--td);font-size:11px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s}
+    .dp-subtab.active{background:var(--ad);border-color:var(--bh);color:var(--a)}
+    .dp-quick-actions{display:flex;gap:5px;margin:-2px 0 10px}
+    .dp-quick-btn{flex:1;padding:6px 8px;border-radius:6px;border:1px solid var(--b);background:rgba(255,255,255,0.03);color:var(--t);font-size:10px;font-weight:600;cursor:pointer;transition:all .15s}
+    .dp-quick-btn:hover{background:var(--ad);border-color:var(--bh);color:#fff}
+    .dp-pin-levels{margin:0 0 8px;padding:7px 9px 8px;background:rgba(255,255,255,0.025);border:1px solid var(--b);border-radius:8px;display:flex;flex-direction:column;gap:1px}
+    .dp-pin-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+    .dp-pin-title{font-size:9px;font-weight:700;color:var(--td);text-transform:uppercase;letter-spacing:.6px}
+    .dp-pin-actions{display:flex;gap:4px}
+    .dp-meta-line{margin:-4px 0 8px;font-size:10px;color:var(--td);text-align:right}
+    .dp-list{display:flex;flex-direction:column;gap:5px}
+
+    /* Rapor karti */
+    .dp-card{background:rgba(255,255,255,0.03);border:1px solid var(--b);border-radius:8px;padding:7px 10px 7px 12px;cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
+    .dp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;background:var(--card-border, var(--a))}
+    .dp-card:hover{background:var(--ad);border-color:var(--bh)}
+    .dp-card.selected{background:var(--ad);border-color:var(--a);box-shadow:0 0 0 1px rgba(89,152,197,0.20)}
+    .dp-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+    .dp-card-label{font-size:9px;font-weight:700;letter-spacing:.4px;color:var(--a);background:var(--ad);padding:1px 6px;border-radius:10px}
+    .dp-card-time{font-size:9px;color:var(--td)}
+    .dp-card-id{font-size:9px;color:var(--td);margin-bottom:2px}
+    .dp-card-title{font-size:10px;color:var(--t);line-height:1.3;margin:2px 0 3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .dp-card-sev{display:flex;align-items:center;gap:5px}
+    .sev-bar-wrap{flex:1;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+    .sev-bar{height:100%;border-radius:2px;background:var(--a);transition:width .4s}
+    .dp-card-sev-val{font-size:10px;color:var(--td)}
+
+    /* Kume karti */
+    .dp-cluster-card{background:rgba(255,255,255,0.03);border:1px solid var(--b);border-radius:8px;padding:9px 11px;cursor:pointer;transition:all .15s}
+    .dp-cluster-card:hover{background:var(--ad);border-color:var(--bh)}
+    .dp-cluster-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+    .dp-cluster-badge{background:var(--ad);color:var(--a);font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+    .dp-cluster-count{font-size:11px;color:var(--td)}
+    .dp-cluster-type{font-size:12px;font-weight:600;color:var(--t);margin-bottom:2px}
+    .dp-cluster-meta{font-size:10px;color:var(--td)}
+    .dp-empty{text-align:center;color:var(--td);font-size:12px;padding:28px 0}
+    .dp-loading{text-align:center;padding:28px 0}
+    .dp-loading .spinner{width:24px;height:24px;border-width:2px;margin:0 auto 10px}
+    .dp-loading p{font-size:11px;color:var(--td)}
+
+    /* KATMANLAR */
+    .sec-label{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--td);margin:14px 0 6px}
+    .sec-label:first-child{margin-top:0}
+    .layer-btn{width:100%;padding:9px 11px;background:rgba(255,255,255,0.03);color:var(--t);border:1px solid var(--b);border-radius:8px;font-size:12px;font-weight:500;text-align:left;margin-bottom:5px;display:flex;align-items:center;gap:9px;justify-content:space-between;transition:all .15s}
+    .layer-btn:hover{background:var(--ad);border-color:var(--bh)}
+    .layer-btn .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+    .layer-btn .layer-lbl{flex:1;display:flex;align-items:center;gap:9px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .layer-btn.active-layer{background:var(--ad);border-color:var(--bh);color:#fff}
+    .inp{width:100%;padding:7px 10px;background:rgba(255,255,255,0.04);border:1px solid var(--b);border-radius:7px;color:var(--t);font-size:12px;margin-bottom:6px}
+    .inp:focus{outline:none;border-color:var(--a);box-shadow:0 0 0 2px rgba(89,152,197,0.12)}
+    .inp::placeholder{color:#444}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+    .action-btn{width:100%;padding:9px;background:var(--ad);color:#fff;border:1px solid rgba(89,152,197,0.25);border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;margin-bottom:5px;transition:all .15s}
+    .action-btn:hover{background:var(--am);border-color:var(--a)}
+    .action-btn.danger{background:rgba(255,255,255,0.04);border-color:var(--b);color:var(--td)}
+    .action-btn.danger:hover{color:#fff;background:var(--ad);border-color:var(--bh)}
+    hr.sep{border:none;border-top:1px solid var(--b);margin:12px 0}
+    .check-row{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--td);margin-top:6px}
+    input[type=range]{width:100%;cursor:pointer;accent-color:var(--a)}
+
+    /* RIGHT SIDEBAR */
+    #rightSidebar{position:absolute;top:0;right:0;bottom:0;width:var(--rs-w);z-index:1000;display:flex;flex-direction:column;color:var(--t);border-left:1px solid var(--b);overflow-y:auto;padding:12px 12px 14px;gap:10px}
+    #rightSidebar::-webkit-scrollbar{width:3px}
+    #rightSidebar::-webkit-scrollbar-thumb{background:rgba(89,152,197,0.25);border-radius:2px}
+    .rs-box{background:rgba(255,255,255,0.03);border:1px solid var(--b);border-radius:10px;padding:10px 12px 22px;position:relative;flex-shrink:0}
+    .rs-box-title{font-size:10px;font-weight:700;color:var(--td);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+    .rs-box-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+    .rs-box-head .rs-box-title{margin-bottom:0}
+    .rs-toggle{position:relative;width:26px;height:14px;border-radius:8px;background:rgba(255,255,255,0.10);border:1px solid var(--b);cursor:pointer;transition:background .18s,border-color .18s;flex-shrink:0}
+    .rs-toggle::after{content:'';position:absolute;top:1px;left:1px;width:10px;height:10px;border-radius:50%;background:var(--td);transition:transform .18s,background .18s}
+    .rs-toggle.on{background:var(--ad);border-color:var(--bh)}
+    .rs-toggle.on::after{transform:translateX(12px);background:var(--a)}
+    .rs-detail-btn{background:var(--ad);border:1px solid var(--bh);color:var(--a);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:3px 9px;border-radius:6px;cursor:pointer;transition:all .15s}
+    .rs-detail-btn:hover{background:var(--am);color:#fff}
+
+    /* RAPOR DETAY MODAL */
+    #reportsDetailModal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px)}
+    #reportsDetailModal.open{display:flex}
+    .rdm-box{width:min(1100px,92vw);height:min(80vh,720px);background:rgba(8,14,24,0.92);border:1px solid var(--b);border-radius:14px;display:flex;flex-direction:column;color:var(--t);overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.6)}
+    .rdm-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--b);background:rgba(0,0,0,0.30)}
+    .rdm-title{font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center;gap:10px}
+    .rdm-title .dp-live-dot{width:6px;height:6px}
+    .rdm-stats{display:flex;gap:14px;font-size:10px;color:var(--td);text-transform:uppercase;letter-spacing:.5px}
+    .rdm-stats b{color:#fff;font-size:13px;margin-right:4px}
+    .rdm-close{width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,0.06);border:1px solid var(--b);color:var(--td);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+    .rdm-close:hover{background:var(--ad);color:#fff}
+    .rdm-body{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden}
+    .rdm-col{display:flex;flex-direction:column;overflow:hidden;min-width:0}
+    .rdm-col+.rdm-col{border-left:1px solid var(--b)}
+    .rdm-col-hdr{padding:8px 14px;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--b);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;justify-content:space-between}
+    .rdm-col-hdr .lbl{display:flex;align-items:center;gap:7px}
+    .rdm-col-hdr .dot{width:8px;height:8px;border-radius:50%}
+    .rdm-col-hdr .count{font-size:11px;color:var(--td);font-weight:600}
+    .rdm-list{flex:1;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+    .rdm-list::-webkit-scrollbar{width:4px}
+    .rdm-list::-webkit-scrollbar-thumb{background:rgba(89,152,197,0.30);border-radius:2px}
+    .rdm-card{background:rgba(255,255,255,0.03);border:1px solid var(--b);border-radius:8px;padding:9px 11px;cursor:pointer;transition:all .15s;position:relative}
+    .rdm-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:8px 0 0 8px;background:var(--card-border,var(--a))}
+    .rdm-card:hover{background:var(--ad);border-color:var(--bh)}
+    .rdm-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;gap:6px}
+    .rdm-card-label{font-size:9px;font-weight:700;letter-spacing:.4px;color:var(--a);background:var(--ad);padding:1px 7px;border-radius:10px;white-space:nowrap}
+    .rdm-card-time{font-size:9px;color:var(--td);white-space:nowrap}
+    .rdm-card-meta{font-size:9px;color:var(--td);margin-bottom:3px;display:flex;flex-wrap:wrap;gap:4px 8px}
+    .rdm-card-meta span b{color:var(--t);font-weight:600}
+    .rdm-card-text{font-size:11px;color:var(--t);line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .rdm-sev{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:700;padding:1px 6px;border-radius:6px}
+    .rdm-sev.high{background:rgba(220,38,38,0.18);color:#fca5a5}
+    .rdm-sev.mid{background:rgba(234,179,8,0.18);color:#fde047}
+    .rdm-sev.low{background:rgba(89,152,197,0.18);color:var(--a)}
+    .rdm-empty{flex:1;display:flex;align-items:center;justify-content:center;color:var(--td);font-size:11px;padding:30px 0}
+    .rs-num-row{display:flex;gap:10px}
+    .rs-num-cell{flex:1;text-align:center}
+    .rs-num-val{font-size:22px;font-weight:700;color:#fff;line-height:1}
+    .rs-num-lbl{font-size:9px;color:var(--td);text-transform:uppercase;letter-spacing:.4px;margin-top:3px}
+    .rs-pct{position:absolute;bottom:6px;right:10px;font-size:11px;font-weight:700;color:var(--a)}
+    .rs-pct-bar{position:absolute;bottom:0;left:0;height:3px;background:var(--a);border-radius:0 0 0 10px;transition:width .4s}
+    .rs-types-row{display:flex;gap:0}
+    .rs-type-cell{flex:1;text-align:center;padding:4px 4px;border-right:1px solid var(--b);min-width:0}
+    .rs-type-cell:last-child{border-right:none}
+    .rs-type-val{font-size:16px;font-weight:700;line-height:1}
+    .rs-type-lbl{font-size:9px;color:var(--td);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;letter-spacing:.3px}
+    .rs-empty{flex:1;color:var(--td);font-size:10px;text-align:center;padding:6px}
+    .rs-road-cell{cursor:pointer;transition:background .15s,box-shadow .15s;border-radius:4px}
+    .rs-road-cell:hover{background:rgba(255,255,255,0.05)}
+    .rs-road-cell.rs-active{background:var(--ad);box-shadow:inset 0 0 0 1px var(--bh)}
+    .rs-clickable{cursor:pointer;transition:background .15s,box-shadow .15s;border-radius:4px}
+    .rs-clickable:hover{background:rgba(255,255,255,0.05)}
+    .rs-clickable.rs-active{background:var(--ad);box-shadow:inset 0 0 0 1px var(--bh)}
+    #rs-minimap-box{padding:8px;flex-shrink:0;display:flex;flex-direction:column}
+    #rs-minimap{flex:1;min-height:200px;border-radius:8px;overflow:hidden;border:1px solid var(--b);background:#0a0e14;position:relative}
+    #rs-minimap canvas{width:100%;height:100%;display:block}
+
+    /* DETAY PANEL */
+    #detailPanel{position:absolute;top:14px;right:calc(var(--rs-w) + 14px);width:320px;max-height:calc(100vh - 28px);overflow-y:auto;z-index:1000;border-radius:14px;padding:0;color:var(--t);display:none}
+    #detailPanel.open{display:block}
+    #detailPanel::-webkit-scrollbar{width:3px}
+    #detailPanel::-webkit-scrollbar-thumb{background:rgba(89,152,197,0.25);border-radius:2px}
+    .dp-close{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;background:rgba(0,0,0,0.4);border:1px solid var(--b);color:var(--td);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:all .15s}
+    .dp-close:hover{background:var(--ad);color:#fff}
+    .detail-img-wrap{position:relative;width:100%;border-radius:14px 14px 0 0;overflow:hidden;background:rgba(0,0,0,0.3);min-height:80px}
+    .detail-img-wrap img{width:100%;display:block;max-height:220px;object-fit:cover}
+    .detail-img-wrap .no-img{display:flex;align-items:center;justify-content:center;height:100px;color:var(--td);font-size:12px}
+    .detail-badge{position:absolute;bottom:10px;left:12px;background:rgba(8,14,24,0.80);backdrop-filter:blur(8px);color:var(--a);font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.5px;text-transform:uppercase;border:1px solid rgba(89,152,197,0.25)}
+    .detail-body{padding:14px 16px 16px}
+    .detail-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+    .detail-subtitle{font-size:11px;color:var(--td);margin-bottom:12px}
+    .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+    .detail-field{background:rgba(255,255,255,0.03);border:1px solid var(--b);border-radius:7px;padding:8px 10px}
+    .detail-field-lbl{font-size:9px;color:var(--td);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+    .detail-field-val{font-size:12px;color:#fff;font-weight:600}
+    .detail-section{margin-top:12px}
+    .detail-section-title{font-size:10px;color:var(--td);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--b)}
+    .detail-text{font-size:12px;color:var(--t);line-height:1.5;background:rgba(255,255,255,0.02);border:1px solid var(--b);border-radius:7px;padding:8px 10px}
+
+    /* LEJANT & FİLTRE PANELİ (sağ alt) */
+    #legendPanel{position:relative;z-index:999;border-radius:10px;width:100%;color:var(--t);overflow:hidden;flex-shrink:0;background:rgba(255,255,255,0.03);border:1px solid var(--b)}
+    #legendToggleBar{display:flex;align-items:center;justify-content:space-between;padding:6px 14px;cursor:pointer;user-select:none;-webkit-user-select:none;border-bottom:1px solid transparent;transition:background .12s}
+    #legendToggleBar:hover{background:rgba(255,255,255,0.04)}
+    #legendPanel.lp-open #legendToggleBar{border-bottom-color:var(--b)}
+    .lp-title{font-size:10px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.7px;display:flex;align-items:center;gap:6px}
+    .lp-chevron{width:13px;height:13px;flex-shrink:0;transition:transform .22s;color:var(--td)}
+    .lp-chevron svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    #legendPanel.lp-open .lp-chevron{transform:rotate(180deg)}
+    #legendBody{overflow:hidden;max-height:0;transition:max-height .28s ease;display:flex;flex-direction:column;gap:0}
+    #legendPanel.lp-open #legendBody{max-height:520px}
+    #legendBody .lp-col+.lp-col{border-left:none;border-top:1px solid var(--b)}
+    .lp-col{flex:1;padding:8px 12px 10px;display:flex;flex-direction:column;gap:1px}
+    .lp-col+.lp-col{border-left:1px solid var(--b)}
+    .lp-col-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+    .lp-col-title{font-size:9px;font-weight:700;color:var(--td);text-transform:uppercase;letter-spacing:.6px}
+    .lp-all-row{display:flex;gap:4px}
+    .lp-all-btn{font-size:9px;color:var(--td);cursor:pointer;background:none;border:none;padding:1px 3px;border-radius:4px;transition:all .12s}
+    .lp-all-btn:hover{color:var(--a);background:var(--ad)}
+    /* Satır */
+    .lp-row{display:flex;align-items:center;gap:5px;padding:3px 3px;cursor:pointer;border-radius:5px;transition:background .12s}
+    .lp-row:hover{background:rgba(255,255,255,0.04)}
+    .lp-cb{width:12px;height:12px;border-radius:3px;border:1.5px solid var(--lp-col,var(--a));flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+    .lp-cb svg{width:8px;height:8px;display:none}
+    .lp-row.lp-checked .lp-cb svg{display:block}
+    .lp-row.lp-checked .lp-cb{background:var(--lp-col,var(--a))}
+    .lp-row:not(.lp-checked) .lp-cb{background:transparent}
+    .lp-swatch{width:8px;height:8px;border-radius:2px;flex-shrink:0;opacity:0.85}
+    .lp-label{font-size:10px;color:var(--t);font-weight:500;flex:1;white-space:nowrap}
+    .lp-count{font-size:10px;color:var(--td);font-weight:600;min-width:14px;text-align:right}
+    .lp-vsep{width:1px;background:var(--b);flex-shrink:0}
+
+    /* RAPORLAR (Pipeline) TAB */
+    .rp-stage-btns{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+    .rp-stage-btn{flex:1;min-width:0;padding:7px 4px;border-radius:7px;border:1px solid var(--b);background:rgba(255,255,255,0.03);color:var(--td);font-size:10px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s;line-height:1.2}
+    .rp-stage-btn:hover{background:var(--ad);border-color:var(--bh);color:var(--t)}
+    .rp-stage-btn.active{border-color:var(--bh);color:#fff}
+    .rp-stage-btn.active[data-stage="raw"]{background:rgba(148,163,184,0.20);border-color:rgba(148,163,184,0.5);color:#94a3b8}
+    .rp-stage-btn.active[data-stage="processed"]{background:rgba(34,197,94,0.15);border-color:rgba(34,197,94,0.4);color:#22c55e}
+    .rp-stage-btn.active[data-stage="clusters"]{background:rgba(167,139,250,0.15);border-color:rgba(167,139,250,0.4);color:#a78bfa}
+    .rp-stage-btn.active[data-stage="all"]{background:var(--ad);border-color:var(--bh);color:var(--a)}
+    .rp-stats{display:flex;gap:5px;margin-bottom:10px}
+    .rp-stat{flex:1;text-align:center;border-radius:7px;padding:6px 4px;border:1px solid var(--b)}
+    .rp-stat-val{font-size:16px;font-weight:700;line-height:1}
+    .rp-stat-lbl{font-size:8px;color:var(--td);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+    .rp-stat[data-type="raw"]{background:rgba(148,163,184,0.10)}
+    .rp-stat[data-type="raw"] .rp-stat-val{color:#94a3b8}
+    .rp-stat[data-type="processed"]{background:rgba(34,197,94,0.08)}
+    .rp-stat[data-type="processed"] .rp-stat-val{color:#22c55e}
+    .rp-stat[data-type="clusters"]{background:rgba(167,139,250,0.08)}
+    .rp-stat[data-type="clusters"] .rp-stat-val{color:#a78bfa}
+    .rp-divider{border:none;border-top:1px solid var(--b);margin:8px 0}
+    .rp-card{background:rgba(255,255,255,0.03);border:1px solid var(--b);border-radius:8px;padding:7px 10px 7px 12px;cursor:pointer;transition:all .15s;position:relative;overflow:hidden;margin-bottom:4px}
+    .rp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
+    .rp-card:hover{background:var(--ad);border-color:var(--bh)}
+    .rp-card.raw::before{background:#94a3b8}
+    .rp-card.processed::before{background:#22c55e}
+    .rp-card.cluster::before{background:#a78bfa}
+    .rp-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+    .rp-card-badge{font-size:8px;font-weight:700;letter-spacing:.4px;padding:1px 6px;border-radius:10px;text-transform:uppercase}
+    .rp-card-badge.raw{background:rgba(148,163,184,0.15);color:#94a3b8}
+    .rp-card-badge.processed{background:rgba(34,197,94,0.12);color:#22c55e}
+    .rp-card-badge.cluster{background:rgba(167,139,250,0.12);color:#a78bfa}
+    .rp-card-time{font-size:9px;color:var(--td)}
+    .rp-card-id{font-size:10px;color:var(--t);font-weight:600;margin-bottom:1px}
+    .rp-card-desc{font-size:9px;color:var(--td);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .rp-section-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--td);margin:10px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--b)}
+
+    /* SEL SLIDER (sidebar inline) */
+    #floodInline{display:none;margin-top:6px;padding:8px 10px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:8px}
+    #floodInline.open{display:block}
+    .fi-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+    .fi-label{font-size:10px;color:#60a5fa;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+    .fi-val{font-size:13px;font-weight:700;color:#fff}
+    .fi-val span{font-size:9px;color:var(--td);font-weight:400;margin-left:2px}
+    .fi-slider{width:100%;cursor:pointer;accent-color:#3b82f6;margin:2px 0 5px}
+    .fi-stats{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:4px}
+    .fi-stat{background:rgba(59,130,246,0.10);border:1px solid rgba(59,130,246,0.18);border-radius:6px;padding:4px 6px;text-align:center}
+    .fi-stat-val{font-size:13px;font-weight:700;color:#60a5fa;line-height:1}
+    .fi-stat-lbl{font-size:8px;color:var(--td);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+
+    @media (max-width:1440px){
+      .filter-col{width:190px}
+    }
+    @media (max-width:1280px){
+      .filter-col{width:170px}
+    }
+
+    /* KAMERA KONTROL — Sağ üst */
+    #camControl{position:absolute;bottom:14px;right:calc(var(--rs-w) + 14px);z-index:1000;border-radius:12px;padding:8px;display:flex;flex-direction:column;align-items:center;gap:5px;user-select:none;-webkit-user-select:none}
+    .cam-grid{display:grid;grid-template-columns:34px 34px 34px;grid-template-rows:28px 28px 28px;gap:3px;justify-items:center;align-items:center}
+    .cam-btn{width:34px;height:28px;background:rgba(255,255,255,0.06);border:1px solid var(--b);border-radius:6px;color:var(--td);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .12s}
+    .cam-btn:hover{background:var(--ad);color:var(--a);border-color:var(--bh)}
+    .cam-btn:active{background:var(--am);color:#fff}
+    .cam-btn.home-btn{background:var(--ad);border-color:rgba(89,152,197,0.25);color:var(--a)}
+    .cam-btn.home-btn:hover{background:var(--am);color:#fff}
+    .cam-zoom-row{display:flex;gap:4px;justify-content:center}
+    .cam-help{display:none}
+
+    /* LOGO (sidebar icerisinde) */
+    #logo-wrap{display:none}
+
+    /* BILGI PANELI */
+    #infoPanel{position:absolute;bottom:56px;left:calc(var(--sidebar-w) + 10px);border-radius:12px;padding:14px 16px;z-index:1000;min-width:240px;max-width:340px;max-height:60vh;overflow-y:auto;display:none;color:var(--t)}
+    #infoPanel h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--a);margin-bottom:10px;border-bottom:1px solid rgba(89,152,197,0.2);padding-bottom:8px}
+    #buildingProps td{padding:3px 8px 3px 0;font-size:12px}
+
+    /* LOADING */
+    #loadingIndicator{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.80);backdrop-filter:blur(12px);color:#fff;padding:24px 40px;border-radius:14px;text-align:center;display:none;z-index:9999;font-size:13px}
+    .spinner{border:3px solid rgba(255,255,255,.12);border-top:3px solid var(--a);border-radius:50%;width:36px;height:36px;animation:spin .8s linear infinite;margin:0 auto 12px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* COORD BAR */
+    #coordBar{display:none}
+    #camCoordBar{display:none}
+
+    /* Cesium UI temizligi */
+    .cesium-viewer-toolbar,.cesium-viewer-fullscreenContainer,.cesium-viewer-bottom{display:none!important}
+
+    /* 13 inç ve küçük ekranlar (<=1440px genişlik) */
+    @media (max-width:1440px){
+      :root{--sidebar-w:240px;--rs-w:260px}
+      #sb-header{padding:10px 12px 0}
+      #sb-brand img{height:40px}
+      .sb-tab{padding:7px 4px;font-size:10px}
+      .sb-pane{padding:10px 10px 16px}
+      .dp-stat-val{font-size:15px}
+      .dp-card{padding:5px 8px 5px 10px}
+      .dp-card-title{font-size:9px}
+      .dp-card-label{font-size:8px;padding:1px 5px}
+      #detailPanel{width:280px}
+      #camControl{padding:6px}
+      .cam-grid{grid-template-columns:30px 30px 30px;grid-template-rows:24px 24px 24px;gap:2px}
+      .cam-btn{width:30px;height:24px;font-size:11px}
+    }
+
+    /* Çok küçük ekranlar (<=1280px — 13" default) */
+    @media (max-width:1280px){
+      :root{--sidebar-w:220px;--rs-w:230px}
+      .dp-stat{padding:4px 3px}
+      .dp-stat-val{font-size:14px}
+      .dp-stat-lbl{font-size:8px}
+      .layer-btn{font-size:11px;padding:7px 9px}
+      .cam-help{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div id="cesiumContainer"></div>
+
+  <div id="sidebar" class="glass">
+    <div id="sb-header">
+      <div id="sb-brand" style="justify-content:center">
+        <img src="logo.png" alt="OASIS" style="height:50px">
+        
+      </div>
+      <div id="sb-tabs">
+        <button class="sb-tab active" id="sbtab-disaster" onclick="switchSbTab('disaster')">Canlı Akış</button>
+        <button class="sb-tab" id="sbtab-reports" onclick="switchSbTab('reports')">Veri Havuzu</button>
+        <button class="sb-tab" id="sbtab-layers" onclick="switchSbTab('layers')">Katmanlar</button>
+      </div>
+    </div>
+    <div id="sb-body">
+      <div class="sb-pane active" id="pane-disaster">
+        <div class="dp-live" style="justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:7px"><div class="dp-live-dot"></div>Canli Veri</div>
+          <button id="btn-refresh" onclick="manualRefresh()" title="Veriyi yenile" style="background:rgba(89,152,197,0.12);border:1px solid rgba(89,152,197,0.25);border-radius:6px;color:var(--a);cursor:pointer;padding:3px 8px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:4px;transition:all .15s" onmouseover="this.style.background='rgba(89,152,197,0.28)'" onmouseout="this.style.background='rgba(89,152,197,0.12)'">&#8635; Yenile</button>
+        </div>
+        <div class="dp-subtabs">
+          <button class="dp-subtab active" id="tab-reports" onclick="switchTab('reports')">Bildirimler</button>
+          <button class="dp-subtab" id="tab-clusters" onclick="switchTab('clusters')">Kumeler</button>
+        </div>
+        <div class="dp-pin-levels">
+          <div class="dp-pin-hdr">
+            <span class="dp-pin-title">Rapor Risk Filtresi</span>
+            <span class="dp-pin-actions">
+              <button class="lp-all-btn" onclick="setAllPinLevels(true)">Tümü</button>
+              <button class="lp-all-btn" onclick="setAllPinLevels(false)">Temizle</button>
+            </span>
+          </div>
+          <div class="lp-row lp-checked" id="lp-pin-high"       style="--lp-col:#FF181E" onclick="togglePinLevel('high')"><div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#FF181E"></span><span class="lp-label">Yüksek Risk</span><span class="lp-count" id="lp-pin-cnt-high">0</span></div>
+          <div class="lp-row lp-checked" id="lp-pin-medium"     style="--lp-col:#FF8918" onclick="togglePinLevel('medium')"><div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#FF8918"></span><span class="lp-label">Orta Risk</span><span class="lp-count" id="lp-pin-cnt-medium">0</span></div>
+          <div class="lp-row lp-checked" id="lp-pin-low_medium" style="--lp-col:#237ACF" onclick="togglePinLevel('low_medium')"><div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#237ACF"></span><span class="lp-label">Düşük-Orta Risk</span><span class="lp-count" id="lp-pin-cnt-low_medium">0</span></div>
+        </div>
+        <div class="dp-meta-line" id="dp-last-update">Son guncelleme: -</div>
+        <div class="dp-list" id="dp-list">
+          <div class="dp-loading"><div class="spinner"></div><p>Yukleniyor...</p></div>
+        </div>
+      </div>
+      <div class="sb-pane" id="pane-reports">
+        <div class="rp-stats">
+          <div class="rp-stat" data-type="raw"><div class="rp-stat-val" id="rp-raw-count">-</div><div class="rp-stat-lbl">Ham</div></div>
+          <div class="rp-stat" data-type="processed"><div class="rp-stat-val" id="rp-proc-count">-</div><div class="rp-stat-lbl">İşlenmiş</div></div>
+          <div class="rp-stat" data-type="clusters"><div class="rp-stat-val" id="rp-clust-count">-</div><div class="rp-stat-lbl">Küme</div></div>
+        </div>
+        <div class="rp-stage-btns">
+          <button class="rp-stage-btn active" data-stage="raw" onclick="switchPipelineStage('raw')">Raw</button>
+          <button class="rp-stage-btn" data-stage="processed" onclick="switchPipelineStage('processed')">Processed</button>
+          <button class="rp-stage-btn" data-stage="clusters" onclick="switchPipelineStage('clusters')">Clusters</button>
+          <button class="rp-stage-btn" data-stage="all" onclick="switchPipelineStage('all')">Tümü</button>
+        </div>
+        <div id="rp-list" class="dp-list">
+          <div class="dp-empty">Henüz veri yok</div>
+        </div>
+      </div>
+      <div class="sb-pane" id="pane-layers">
+        <div class="sec-label">Altlik Goruntu</div>
+      
+        <div id="btn-osm" class="layer-btn"><span class="layer-lbl"><span class="dot" style="background:#fff"></span>OpenStreetMap</span><div class="rs-toggle" onclick="toggleOSM()"></div></div>
+        <div id="btn-esri" class="layer-btn active-layer"><span class="layer-lbl"><span class="dot" style="background:#fff"></span>ESRI Uydu Goruntu</span><div class="rs-toggle on" onclick="toggleEsri()"></div></div>
+        <div id="btn-esriglobe" class="layer-btn active-layer"><span class="layer-lbl"><span class="dot" style="background:#06b6d4"></span>Cesium Globe</span><div class="rs-toggle on" onclick="toggleCesiumGlobe()"></div></div>
+        <div id="btn-hgm" class="layer-btn"><span class="layer-lbl"><span class="dot" style="background:#10b981"></span>HGM Ortofoto</span><div class="rs-toggle" onclick="toggleHgmOrtofoto()"></div></div>
+        <div id="btn-tkgm3b" class="layer-btn"><span class="layer-lbl"><span class="dot" style="background:#f59e0b"></span>Google Yol + Yer Adları</span><div class="rs-toggle" onclick="toggleTkgm3BAltlik()"></div></div>
+        <div id="btn-tkgmterrain" class="layer-btn"><span class="layer-lbl"><span class="dot" style="background:#84cc16"></span>TKGM Terrain</span><div class="rs-toggle" onclick="toggleTkgmTerrain()"></div></div>
+        <div id="btn-google3d" class="layer-btn"><span class="layer-lbl"><span class="dot" style="background:#4285f4"></span>Google Photorealistic 3D Tiles</span><div class="rs-toggle" onclick="toggleGoogle3DTiles()"></div></div>
+        <hr class="sep">
+        <div class="sec-label">Binalar</div>
+        <div id="btn-buildings" class="layer-btn active-layer"><span class="layer-lbl"><span class="dot" style="background:#FF8918"></span>Akyazı Binaları</span><div class="rs-toggle on" onclick="toggleBuildingLayer()"></div></div>
+        <hr class="sep">
+        <div class="sec-label">Yol Ağı Durumu</div>
+        <div id="btn-roads" class="layer-btn"><span class="layer-lbl"><span class="dot" style="background:#22c55e"></span>Ordu Yol Ağı</span><div class="rs-toggle" onclick="toggleRoadLayer()"></div></div>
+        <div id="road-status-panel" style="display:none;margin-top:6px;background:rgba(255,255,255,0.04);border:1px solid var(--b);border-radius:6px;padding:8px 10px">
+          <div style="display:flex;gap:6px;margin-bottom:4px">
+            <div style="flex:1;text-align:center;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:4px 2px">
+              <div id="road-closed-count" style="font-size:15px;font-weight:700;color:#ef4444">0</div>
+              <div style="font-size:8px;color:var(--td);text-transform:uppercase;letter-spacing:.4px">Kapalı</div>
+            </div>
+            <div style="flex:1;text-align:center;background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);border-radius:4px;padding:4px 2px">
+              <div id="road-warning-count" style="font-size:15px;font-weight:700;color:#f97316">0</div>
+              <div style="font-size:8px;color:var(--td);text-transform:uppercase;letter-spacing:.4px">Etkilenmiş</div>
+            </div>
+            <div style="flex:1;text-align:center;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);border-radius:4px;padding:4px 2px">
+              <div id="road-open-count" style="font-size:15px;font-weight:700;color:#22c55e">0</div>
+              <div style="font-size:8px;color:var(--td);text-transform:uppercase;letter-spacing:.4px">Açık</div>
+            </div>
+          </div>
+          <div style="font-size:9px;color:var(--td);line-height:1.5">
+            Kapalı: severity≥7 + yol/heyelan göstergesi<br>
+            Etkilenmiş: severity≥5 veya yakın tehlike bildirimi
+          </div>
+        </div>
+        <hr class="sep">
+        <div class="sec-label">Sel Simülasyonu</div>
+        <div id="btn-flood" class="layer-btn"><span class="layer-lbl"><span class="dot" style="background:#3b82f6"></span>Su Katmanı</span><div class="rs-toggle" onclick="toggleFloodSimulation()"></div></div>
+        <div id="floodInline">
+          <div class="fi-row">
+            <span class="fi-label">Su Seviyesi</span>
+            <span class="fi-val" id="floodLevelVal">0.0<span>m</span></span>
+          </div>
+          <input type="range" class="fi-slider" id="floodSlider" min="0" max="5" step="0.1" value="0">
+          <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--td);margin-bottom:4px"><span>0 m</span><span>5 m</span></div>
+          <div class="fi-stats">
+            <div class="fi-stat"><div class="fi-stat-val" id="floodClusterCount">0</div><div class="fi-stat-lbl">Sel Kümesi</div></div>
+            <div class="fi-stat"><div class="fi-stat-val" id="floodAreaCount">0</div><div class="fi-stat-lbl">Alan (km²)</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAĞ SIDEBAR -->
+  <div id="rightSidebar" class="glass">
+    <div class="rs-box">
+      <div class="rs-box-head">
+        <div class="rs-box-title">Raporlar</div>
+        <button class="rs-detail-btn" onclick="openReportsDetailModal()" title="Detayları aç">Detay</button>
+      </div>
+      <div class="rs-num-row">
+        <div class="rs-num-cell"><div class="rs-num-val" id="rs-raw">-</div><div class="rs-num-lbl">Ham</div></div>
+        <div class="rs-num-cell"><div class="rs-num-val" id="rs-proc" style="color:#22c55e">-</div><div class="rs-num-lbl">İşlenmiş</div></div>
+      </div>
+      <div class="rs-pct-bar" id="rs-pct-bar" style="width:0%"></div>
+      <div class="rs-pct" id="rs-pct">%0</div>
+    </div>
+    <div class="rs-box" style="padding-bottom:10px">
+      <div class="rs-box-head">
+        <div class="rs-box-title">Olay Türleri</div>
+        <div class="rs-toggle on" id="tgl-event-types" onclick="toggleReportPinsLayer()" title="Olay pinlerini gizle/göster"></div>
+      </div>
+      <div class="rs-types-row" id="rs-event-types"><div class="rs-empty">Veri yok</div></div>
+    </div>
+    <div class="rs-box" style="padding-bottom:10px">
+      <div class="rs-box-head">
+        <div class="rs-box-title">Küme Türleri</div>
+        <div class="rs-toggle" id="tgl-cluster-types" onclick="toggleClusterPinsLayer()" title="Küme katmanını gizle/göster"></div>
+      </div>
+      <div class="rs-types-row" id="rs-cluster-types"><div class="rs-empty">Veri yok</div></div>
+    </div>
+    <div class="rs-box" style="padding-bottom:10px">
+      <div class="rs-box-head">
+        <div class="rs-box-title">Ordu Yol Ağı</div>
+        <div class="rs-toggle" id="tgl-road-layer" onclick="toggleRoadLayer()" title="Yol ağını gizle/göster"></div>
+      </div>
+      <div class="rs-types-row">
+        <div class="rs-type-cell rs-road-cell" id="rs-road-all" onclick="setRoadFilterAll()" title="Tüm yolları göster">
+          <div class="rs-type-val" id="rs-road-all-val" style="color:var(--a)">0</div>
+          <div class="rs-type-lbl">Tümü</div>
+        </div>
+        <div class="rs-type-cell rs-road-cell" id="rs-road-closed" onclick="toggleRoadStatusFilter('closed')" title="Sadece kapalı yolları göster">
+          <div class="rs-type-val" id="rs-road-closed-val" style="color:#ef4444">0</div>
+          <div class="rs-type-lbl">Kapalı</div>
+        </div>
+        <div class="rs-type-cell rs-road-cell" id="rs-road-warning" onclick="toggleRoadStatusFilter('warning')" title="Sadece etkilenmiş yolları göster">
+          <div class="rs-type-val" id="rs-road-warning-val" style="color:#f97316">0</div>
+          <div class="rs-type-lbl">Etkilenmiş</div>
+        </div>
+        <div class="rs-type-cell rs-road-cell" id="rs-road-open" onclick="toggleRoadStatusFilter('open')" title="Sadece açık yolları göster">
+          <div class="rs-type-val" id="rs-road-open-val" style="color:#22c55e">0</div>
+          <div class="rs-type-lbl">Açık</div>
+        </div>
+      </div>
+    </div>
+    <div class="rs-box" id="rs-minimap-box">
+      <div class="rs-box-title" style="margin-bottom:6px">Risk Haritası</div>
+      <div id="rs-minimap"><canvas id="rs-minimap-canvas"></canvas></div>
+    </div>
+    <!-- LEJANT & FİLTRE PANELİ (sidebar içi) -->
+    <div id="legendPanel" class="glass lp-open">
+      <div id="legendToggleBar" onclick="toggleLegendPanel()">
+      <div class="lp-title">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm2 5h12v2H6zm3 5h6v2H9z"/></svg>
+        LEJANT &amp; FİLTRE
+      </div>
+      <div class="lp-chevron"><svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></div>
+    </div>
+    <div id="legendBody">
+      <!-- SAĞ: Bina Renkleri -->
+      <div class="lp-col">
+        <div class="lp-col-hdr">
+          <div class="lp-col-title">BİNA RENKLERİ</div>
+          <div class="lp-all-row">
+            <button class="lp-all-btn" onclick="setAllBuildingLevels(true)">Tümü</button>
+            <button class="lp-all-btn" onclick="setAllBuildingLevels(false)">Temizle</button>
+          </div>
+        </div>
+        <div class="lp-row lp-checked" id="lp-bld-extreme"    style="--lp-col:#ED1AFC" onclick="toggleBuildingLevel('extreme')">    <div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#ED1AFC"></span><span class="lp-label">Aşırı Tehlike</span></div>
+        <div class="lp-row lp-checked" id="lp-bld-high"       style="--lp-col:#FF181E" onclick="toggleBuildingLevel('high')">       <div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#FF181E"></span><span class="lp-label">Yüksek Tehlike</span></div>
+        <div class="lp-row lp-checked" id="lp-bld-medium_high" style="--lp-col:#FF8918" onclick="toggleBuildingLevel('medium_high')"><div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#FF8918"></span><span class="lp-label">Tehlike İzleme</span></div>
+        <div class="lp-row lp-checked" id="lp-bld-medium"     style="--lp-col:#FFD718" onclick="toggleBuildingLevel('medium')">     <div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#FFD718"></span><span class="lp-label">Orta Risk</span></div>
+        <div class="lp-row lp-checked" id="lp-bld-low_medium" style="--lp-col:#237ACF" onclick="toggleBuildingLevel('low_medium')"> <div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#237ACF"></span><span class="lp-label">Düşük-Orta Risk</span></div>
+        <div class="lp-row lp-checked" id="lp-bld-low"        style="--lp-col:#00AC3A" onclick="toggleBuildingLevel('low')">        <div class="lp-cb"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="lp-swatch" style="background:#00AC3A"></span><span class="lp-label">Düşük Risk</span></div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div id="camControl" class="glass">
+    <!-- Yön D-Pad -->
+    <div class="cam-grid">
+      <div></div>
+      <button class="cam-btn" onmousedown="startLook('up')" ontouchstart="startLook('up')" onmouseup="stopLook()" ontouchend="stopLook()">&#9650;</button>
+      <div></div>
+      <button class="cam-btn" onmousedown="startLook('left')" ontouchstart="startLook('left')" onmouseup="stopLook()" ontouchend="stopLook()">&#9664;</button>
+      <button class="cam-btn home-btn" onclick="flyHome()">&#8962;</button>
+      <button class="cam-btn" onmousedown="startLook('right')" ontouchstart="startLook('right')" onmouseup="stopLook()" ontouchend="stopLook()">&#9654;</button>
+      <div></div>
+      <button class="cam-btn" onmousedown="startLook('down')" ontouchstart="startLook('down')" onmouseup="stopLook()" ontouchend="stopLook()">&#9660;</button>
+      <div></div>
+    </div>
+    <!-- Zoom -->
+    <div class="cam-zoom-row">
+      <button class="cam-btn" onmousedown="startZoom(1)" ontouchstart="startZoom(1)" onmouseup="stopZoom()" ontouchend="stopZoom()" style="width:48px">+</button>
+      <button class="cam-btn" onmousedown="startZoom(-1)" ontouchstart="startZoom(-1)" onmouseup="stopZoom()" ontouchend="stopZoom()" style="width:48px">&minus;</button>
+    </div>
+  </div>
+
+  <div id="detailPanel" class="glass">
+    <button class="dp-close" onclick="closeDetail()">&times;</button>
+    <div id="detailContent"></div>
+  </div>
+
+  <div id="infoPanel" class="glass">
+    <h3>Bina Ozellikleri</h3>
+    <table id="buildingProps" style="width:100%;border-collapse:collapse"></table>
+    <br>
+    <button class="action-btn danger" style="margin:0" onclick="document.getElementById('infoPanel').style.display='none'">Kapat</button>
+  </div>
+
+  <div id="loadingIndicator"><div class="spinner"></div>Yukleniyor...</div>
+
+  <div id="coordBar">Lat: <span id="curLat">-</span> | Lon: <span id="curLng">-</span> | Alt: <span id="curAlt">-</span> m</div>
+
+  <div id="logo-wrap"><img src="logo.png" alt="OASIS"></div>
+
+  <!-- RAPOR DETAY MODAL -->
+  <div id="reportsDetailModal" onclick="if(event.target===this)closeReportsDetailModal()">
+    <div class="rdm-box">
+      <div class="rdm-head">
+        <div class="rdm-title"><span class="dp-live-dot" style="background:var(--a)"></span>Rapor Detayları</div>
+        <div class="rdm-stats">
+          <div><b id="rdm-raw-count">0</b>Ham</div>
+          <div><b id="rdm-proc-count" style="color:#22c55e">0</b>İşlenmiş</div>
+          <div><b id="rdm-pct">%0</b>İşlenme Oranı</div>
+        </div>
+        <button class="rdm-close" onclick="closeReportsDetailModal()" title="Kapat">✕</button>
+      </div>
+      <div class="rdm-body">
+        <div class="rdm-col">
+          <div class="rdm-col-hdr">
+            <div class="lbl"><span class="dot" style="background:#94a3b8"></span>Ham Raporlar</div>
+            <div class="count" id="rdm-raw-hdr-count">0 kayıt</div>
+          </div>
+          <div class="rdm-list" id="rdm-raw-list"></div>
+        </div>
+        <div class="rdm-col">
+          <div class="rdm-col-hdr">
+            <div class="lbl"><span class="dot" style="background:#22c55e"></span>İşlenmiş Raporlar</div>
+            <div class="count" id="rdm-proc-hdr-count">0 kayıt</div>
+          </div>
+          <div class="rdm-list" id="rdm-proc-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=29"></script>
+</body>
+</html>
